@@ -7,22 +7,11 @@
   // Vars 
   let showDetails = false;
 
-
-
-  function displayDetails() {
-    showDetails = true;
-  }
-  
-  function offDetails() {
-    showDetails = false;
-    console.log(showDetails);
-  }
-
   let planetData = '';
   onMount(async () => {
     document.body.style.overflow = 'hidden';
     await import('@zumer/orbit/dist/orbit.js');
-    const planets = document.querySelectorAll<HTMLElement>('.planet');
+    const planets = document.querySelectorAll<HTMLImageElement>('.planet');
     if(!planets) {return;}
 
     planets.forEach(planet => {
@@ -32,16 +21,22 @@
     });
   });
 
-  function zoomIn(planet : HTMLElement) {
+  async function zoomIn(planet : HTMLImageElement) {
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.add('pause-orbit'));
-    displayDetails();
+    const planetData = sendPlanetGetInfo(planet.alt);
+
+
+    showDetails = true;
   }
 
   function zoomOut() {
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.remove('pause-orbit'));
-    offDetails(); 
+    
+    
+    showDetails = false;
+    console.log(showDetails);
   }
 
   async function sendPlanetGetInfo(planet: string)  {
@@ -312,19 +307,19 @@
 <div class="twinkle"></div>
 
 <div>
-  <img src="/images/mercury.png" alt="m" class="planet mercury"/>
+  <img src="/images/mercury.png" alt="mercury" class="planet mercury"/>
 
-  <img src="/images/venus.png" alt="v" class="planet venus"/>
+  <img src="/images/venus.png" alt="venus" class="planet venus"/>
 
-  <img src="/images/earth.png" alt="e" class="planet earth"/>
+  <img src="/images/earth.png" alt="earth" class="planet earth"/>
 
-  <img src="/images/mars.png" alt="m" class="planet mars"/>
+  <img src="/images/mars.png" alt="mars" class="planet mars"/>
 
-  <img src="/images/jupiter.png" alt="j" class="planet jupiter"/>
+  <img src="/images/jupiter.png" alt="jupiter" class="planet jupiter"/>
 
-  <img src="/images/saturn.png" alt="s" class="planet saturn"/>
+  <img src="/images/saturn.png" alt="saturn" class="planet saturn"/>
 
-  <img src="/images/uranus.png" alt="u" class="planet uranus"/>
+  <img src="/images/uranus.png" alt="uranus" class="planet uranus"/>
 
-  <img src="/images/neptune.png" alt="n" class="planet neptune"/>
+  <img src="/images/neptune.png" alt="neptune" class="planet neptune"/>
 </div>
