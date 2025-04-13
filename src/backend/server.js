@@ -4,9 +4,11 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
-app.get('/planet', async (req, res) => {
-    const name = req;
+app.post('/planet', async (req, res) => {
+    const name = req.query.name;
+    console.log(name);
     //if (!name) {
     //    return res.status(400).json({ error: 'Missing Planet Name' });
     //}

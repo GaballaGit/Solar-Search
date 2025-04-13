@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import axios from 'axios'; 
     onMount(async () => {
     await import('@zumer/orbit/dist/orbit.js');
   });
@@ -8,6 +9,21 @@
   function handleHelpClick() {
     alert("Help clicked!");
   }
+
+
+  let planet = "Earth";
+
+  async function sendInfo(planet: str)  {
+    try {
+      const response = await axios.post('http://localhost:8000/planet', {
+        name: planet
+      });
+      console.log(response);
+    }
+    catch (error) {
+      console.error('Error fetching planets:', error);
+    }
+  }  
 </script>
 
 <style>
@@ -141,8 +157,10 @@
    }
 
    .o-arc.indigo {
+
      background-color: var(--o-indigo);
    }
+
   @keyframes rotation {
     0% {
       rotate: 360deg;
@@ -182,7 +200,10 @@
       </div>
       <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.23; --o-ellipse-y: 0.23">
         <div class="satellite neptune angle-260 grow-1.2x">
-          <o-arc class="indigo"></o-arc>
+          <div class="capsule">
+            <o-arc class="indigo" on:click={sendInfo}  ></o-arc>
+          </div>
+          <!--<o-arc class="indigo" ></o-arc>-->
         </div>
       </div>
     </div>
