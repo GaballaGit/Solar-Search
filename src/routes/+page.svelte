@@ -2,6 +2,17 @@
   import { onMount } from 'svelte';
   import axios from 'axios'; 
   
+
+  // Vars 
+  let showDetails = false;
+
+
+
+  function displayDetails() {
+    showDetails = true;
+  }
+
+
   onMount(async () => {
     await import('@zumer/orbit/dist/orbit.js');
     const buttons = document.querySelectorAll<HTMLElement>('button');
@@ -79,6 +90,10 @@
   onMount(() => {
     syncPlanets();
   });
+
+
+
+
 </script>
 
 <style>

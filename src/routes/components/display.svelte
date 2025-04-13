@@ -21,13 +21,15 @@ export let rotation_period = '0';
 
 
   .back{
-   background-color: rgba(0,0,80,0.3); 
+   background-color: rgba(0,0,80,0.1); 
     width: 50%;
+    height: 25%;
+    margin-top: 5%;
   }
   
   .main{
-    width: 50vw;
-    height: 50vh;
+    width: 100%;
+    height: 100%;
 
     background-image: linear-gradient(
     rgba(17, 20, 53, 0.05),
@@ -40,6 +42,11 @@ export let rotation_period = '0';
 
 
   .title{
+    background-color: rgba(0,0,0,0.2);
+    border: solid cyan;
+    border-right: none;
+    border-left: none;
+    border-top: none;
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -139,6 +146,7 @@ export let rotation_period = '0';
 
   <div class="main">
     <div class="title">
+      <h1></h1>
       <button> -- Prev</button>
       <h2>{name}</h2>
       <button>Next --</button>
