@@ -12,16 +12,16 @@ app.get ('/planet', async (req, res) => {
         const data = response.data;
 
         const planet = {
-            name: data.englishName, //string
-            moons: data.moons ? data.moons.length : 0, //int
-            mass: data.mass ? data.mass.massValue * 10 ** data.mass.massExponent : null, //kg
-            radius: data.meanRadius, //km
-            semi_major_axis: data.semimajorAxis, //km
-            gravity: data.gravity, // m/s^2
-            density: data.density,  // g/cm^3
-            escape_velocity: data.escape, //m/s
-            orbital_period: data.sideralOrbit, //hours
-            rotation_period: data.sideralRotation //hours
+            name: data.englishName,
+            moons: data.moons ? data.moons.length : 0,
+            mass: data.mass ? data.mass.massValue * 10 ** data.mass.massExponent + "kg" : null,
+            radius: data.meanRadius + "km",
+            semi_major_axis: data.semimajorAxis + "km",
+            gravity: data.gravity + "m/s^2",
+            density: data.density + "g/cm^3",
+            escape_velocity: data.escape + "m/s",
+            orbital_period: data.sideralOrbit + "hours",
+            rotation_period: data.sideralRotation + "hours"
         };
 
         res.json(planet);
