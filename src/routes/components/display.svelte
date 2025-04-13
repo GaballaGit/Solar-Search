@@ -24,21 +24,22 @@ export let rotation_period = '0';
   .back{
    background-color: rgba(0,0,80,0.4); 
     width: 100%;
-    height: 25%;
-    margin-top: 5%;
+    height: 15%;
     color: white;
+    margin-top: 0px;
+    z-index:999;
   }
   
   .main{
     width: 100%;
-    height: 100%;
+    height: 50%;
 
     background-image: linear-gradient(
     rgba(17, 20, 53, 0.05),
     rgba(118, 255, 241, 0.05)
     );
     background-repeat: repeat;
-    background-size: 10vw 10vh;
+    background-size: 10vw 5vh;
     animation: bgscroll 4s linear infinite;
   }
 
