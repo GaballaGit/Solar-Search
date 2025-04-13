@@ -1,13 +1,15 @@
 import express from 'express';
 import axios from 'axios';
-
+import cors from 'cors';
 const app = express();
 
-app.get ('/planet', async (req, res) => {
-    const name = req.query.name;
-    if (!name) {
-        return res.status(400).json({ error: 'Missing Planet Name' });
-    }
+app.use(cors());
+
+app.get('/planet', async (req, res) => {
+    const name = req;
+    //if (!name) {
+    //    return res.status(400).json({ error: 'Missing Planet Name' });
+    //}
     
     try {
         const response = await axios.get(`https://api.le-systeme-solaire.net/rest/bodies/${name}`);
