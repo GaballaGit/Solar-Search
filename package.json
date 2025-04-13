@@ -2,6 +2,7 @@
 	"name": "solar-search",
 	"version": "0.0.1",
 	"scripts": {
+		"start": "node src/backend/server.js",
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
 		"preview": "vite preview",
