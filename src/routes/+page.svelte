@@ -179,6 +179,9 @@
    .o-arc.indigo {
      background-color: var(--o-indigo);
    }
+   .o-arc.green{
+     background-color: var(--o-green);
+   }
    .capsule {
     width: 100%;
     height: 100%;
@@ -208,56 +211,63 @@
       <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite mercury">
             <div class="capsule">
-              <o-arc class="indigo" on:click={() => sendPlanetGetInfo("mercury")}  ></o-arc>
+              <o-arc class="indigo" on:click={() => sendPlanetGetInfo("mercury")}></o-arc>
             </div>
         </div>
       </div>
       <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite venus"></div>
-          <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("venus")}  ></o-arc>
+        <div class="satellite venus">
+            <div class="capsule">
+              <o-arc class="indigo" on:click={() => sendPlanetGetInfo("venus")}></o-arc>-->
           </div>
+        </div>
       </div>
       <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite earth"></div>
+        <div class="satellite earth">
           <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("earth")}  ></o-arc>
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("earth")}></o-arc>
           </div>
+        </div>
       </div>
       <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite mars"></div>
+        <div class="satellite mars">
           <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("mars")}  ></o-arc>
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("mars")}></o-arc>-->
           </div>
+        </div>
       </div>
       <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite jupiter grow-2x"></div>
+        <div class="satellite jupiter grow-2x">
           <div class="capsule">
-            <!--<o-arc class="indigo" on:click={() => sendPlanetGetInfo("jupiter")}  ></o-arc>-->
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("jupiter")}></o-arc>
           </div>
+        </div>
       </div>
       <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite saturn angle-30 grow-1.8x"></div>
+        <div class="satellite saturn angle-30 grow-1.8x">
           <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("saturn")}  ></o-arc>
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("saturn")}></o-arc>
           </div>
+        </div>
+
       </div>
       <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite uranus angle-180 grow-1.2x"></div>
+        <div class="satellite uranus angle-180 grow-1.2x">
+
           <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("uranus")}  ></o-arc>
+            <o-arc class="green" on:click={() => sendPlanetGetInfo("uranus")}></o-arc>
           </div>
+        </div>
       </div>
       <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite neptune angle-260 grow-1.2x">
           <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("neptune")}  ></o-arc>
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("Neptune")}  ></o-arc>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="stars"></div>
 <div class="twinkle"></div>
