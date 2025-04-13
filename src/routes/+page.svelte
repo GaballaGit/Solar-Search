@@ -134,7 +134,7 @@
   .rotate-orbit {
       animation-name: rotation;
       animation-iteration-count: 10;
-      animation-timing-function: linear;
+      animation-timing-function: linear infinite;
    }
 
    .rotate-time-15 {
@@ -184,6 +184,7 @@
      background-color: var(--o-indigo);
    }
 
+
   @keyframes rotation {
     0% {
       rotate: 360deg;
@@ -193,7 +194,9 @@
       rotate: 0deg;
     }
   }
+
 </style>
+
 
 <div class="center-div">
   <div class="bigbang">
@@ -226,7 +229,6 @@
           <div class="capsule">
             <o-arc class="indigo" on:click={() => sendPlanetGetInfo("Neptune")}  ></o-arc>
           </div>
-          <!--<o-arc class="indigo" ></o-arc>-->
         </div>
       </div>
     </div>
