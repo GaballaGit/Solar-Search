@@ -9,7 +9,7 @@
 
     buttons.forEach(button => {
       button.addEventListener('click', (event) => {
-        const classSelector = [...e.classList]
+        const classSelector = [...button.classList]
           .map(cls => `.${cls}`)
           .join('');
         
@@ -21,27 +21,18 @@
   });
 
   function zoomIn(planet : HTMLElement) {
-    const rect = planet.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    const viewCenterX = window.innerWidth / 2;
-    const viewCenterY = window.innerHeight / 2;
+    const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
+    orbits.forEach(orbit => orbit.classList.add('pause-orbit'));
+    console.log("ORBIT STOPPED");
+    orbits.forEach(orbit => console.log(orbit.classList));
 
-    const offsetX = centerX - viewCenterX;
-    const offsetY = centerY - viewCenterY;
-
-    const zoomBox = document.querySelector<HTMLElement>('.zoom-container');
-    if(zoomBox) {
-      zoomBox.style.transform = `scale(0.5) translate(${-offsetX / 2}px, ${-offsetY / 2}px)`;
-    }
   }
 
   function zoomOut() {
-    const zoomBox = document.querySelector<HTMLElement>('.zoom-container');
-    if(zoomBox) {
-      zoomBox.style.transform = 'scale(1) translate(0, 0)';
-    }
+    const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
+    orbits.forEach(orbit => orbit.classList.remove('pause-orbit'));
+    console.log("ORBIT ADDED");
+    orbits.forEach(orbit => console.log(orbit.classList));
   }
 
   async function sendPlanetGetInfo(planet: string)  {
@@ -96,17 +87,6 @@
   html, body {
     height: 500px;
     overflow: hidden; 
-  }
-
-  .zoom_box {
-    transition: transform 0.5s ease;
-    transform-origin: center center;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
   }
 
   .stars {
@@ -181,6 +161,9 @@
     border: 0.1px solid rgba(255, 255, 255, 0.422);
   }
 
+  :global(.pause-orbit) {
+    animation-play-state: paused !important;
+  }
 
   .rotate-orbit {
     animation-name: rotation;
@@ -248,7 +231,6 @@
     0% {transform: rotate(0deg);}
     100% {transform: rotate(360deg);}
   }
-
 </style>
 
 <div class="center-div">
