@@ -26,6 +26,7 @@ export let rotation_period = '0';
     width: 100%;
     height: 25%;
     margin-top: 5%;
+    color: white;
   }
   
   .main{
@@ -64,6 +65,7 @@ export let rotation_period = '0';
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
   }
   
   .title button:hover{

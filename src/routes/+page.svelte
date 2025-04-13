@@ -246,8 +246,10 @@
       />
     </div>
   {/if}
-  <img src="/images/sun.png" alt="sun" width="200px"/>
   <div class="gravity-spot perspective" style="--o-o-force:800px">
+    <div class="orbit-0">
+      <img src="/images/sun.png" alt="sun" width="200px"/>
+    </div>
     <div class="orbit-3 rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.4; --o-ellipse-y: 0.4">
       <div class="satellite mercury">
           <div class="capsule">
