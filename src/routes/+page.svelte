@@ -149,7 +149,7 @@
     left: 50%;
     transform: translate(-50%, -50%); 
     z-index: 100; 
-    transition: 0.2s ease-in;
+    transition: 0.05s ease-in;
     pointer-events: auto;
   }
 
@@ -213,6 +213,10 @@
     z-index: 100;
   }
   
+  .sun {
+    width: 200px;
+    transform: translateX(500px);
+  }
   .mercury {width: 75px;}
   .venus {width: 75px;}
   .earth {width: 75px;}
@@ -246,9 +250,9 @@
       />
     </div>
   {/if}
+  <img src="/images/sun.png" alt="sun" class="sun" width="200px"/>
   <div class="gravity-spot perspective" style="--o-o-force:800px">
     <div class="orbit-0">
-      <img src="/images/sun.png" alt="sun" width="200px"/>
     </div>
     <div class="orbit-3 rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.4; --o-ellipse-y: 0.4">
       <div class="satellite mercury">
