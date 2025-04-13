@@ -6,7 +6,7 @@
 
   // Vars 
   let showDetails = false;
-
+  let lastPlanet = '';
   let planetData = '';
   onMount(async () => {
     document.body.style.overflow = 'hidden';
@@ -35,10 +35,10 @@
       }
     });
     if(sun) {sun.style.opacity = '0'};
-
+    lastPlanet = planet;
     planet.style.transform = 'scale(3)';
     
-    const flexbox = document.querySelector('.container');
+    const flexbox = document.querySelector('.content');
 
     if(!flexbox) {return;}
     flexbox.appendChild(planet);
@@ -51,7 +51,10 @@
   function zoomOut() {
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.remove('pause-orbit'));
-
+    if (lastPlanet) {
+      lastPlanet.style.transform = 'scale(1)'
+    }
+    lastPlanet.style.transform = 'shrink(3)';
     const otherPlanets = document.querySelectorAll<HTMLImageElement>('.planet');
     const sun = document.querySelector('.sun');
 
@@ -62,10 +65,11 @@
     if (sun) {
       sun.style.opacity = '1';
     }
-    
-    const elementToOrphan = document.querySelector('.child');
 
-    elementToOrphan.remove();
+    const orphan= document.querySelector('.child');
+    if (orphan) {
+      orphan.remove();
+    }
 
     showDetails = false;
 
