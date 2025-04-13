@@ -36,6 +36,13 @@
     });
     if(sun) {sun.style.opacity = '0'};
 
+    planet.style.transform = 'scale(3)';
+    
+    const flexbox = document.querySelector('.container');
+
+    if(!flexbox) {return;}
+    flexbox.appendChild(planet);
+
     if (planetData) {
       showDetails = true;
     }
@@ -56,6 +63,10 @@
       sun.style.opacity = '1';
     }
     
+    const elementToOrphan = document.querySelector('.child');
+
+    elementToOrphan.remove();
+
     showDetails = false;
 
   }
@@ -105,7 +116,7 @@
     height: 500px;
     overflow: hidden; 
   }
-
+  
   .stars {
     background: black url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png") repeat;
     position: absolute;
@@ -241,14 +252,26 @@
     width: 200px;
     transform: translateX(500px);
   }
-  .mercury {width: 75px;}
-  .venus {width: 75px;}
-  .earth {width: 75px;}
-  .mars {width: 75px;}
-  .jupiter {width: 75px;}
-  .saturn {width: 75px;}
-  .uranus {width: 75px;}
-  .neptune {width: 75px;}
+  .mercury {width: 14px;}
+  .venus {width: 34px;}
+  .earth {width: 36px;}
+  .mars {width: 18px;}
+  .jupiter {width: 201px;}
+  .saturn {width: 167px;}
+  .uranus {width: 73px;}
+  .neptune {width: 71px;}
+
+  .container {
+    display:flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .content {
+    width: 66.7%;
+    height: 100vh;
+    padding:20px;
+  }
 
   @keyframes rotation {
     0% {transform: rotate(0deg);}
@@ -344,8 +367,15 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="content">
+
+  </div>
+</div>
+
 <div class="stars"></div>
 <div class="twinkle"></div>
+<title >Solar Search</title>
 
 <div>
   <img src="/images/mercury.png" alt="mercury" class="planet mercury"/>
