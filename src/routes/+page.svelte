@@ -3,6 +3,11 @@
     onMount(async () => {
     await import('@zumer/orbit/dist/orbit.js');
   });
+
+
+  function handleHelpClick() {
+    alert("Help clicked!");
+  }
 </script>
 
 <style>
@@ -62,11 +67,13 @@
     justify-content: center;
     align-items: center;
   }
+
   .gravity-spot {
      width: 800px;
      height: 800px;
      position: relative;
    }
+
   .perspective{ 
      transform-style: preserve-3d;
      perspective: 300px;
@@ -81,7 +88,7 @@
 
   .orbit,
   [class*=orbit-] {
-    border: 0.1px solid rgba(255, 255, 255, 0.422)
+    border: 0.1px solid rgba(255, 255, 255, 0.422);
   }
 
 
@@ -91,14 +98,51 @@
       animation-timing-function: linear;
    }
 
-  .rotate-time-5 {
-      animation-duration: 5s;
+   .rotate-time-15 {
+     animation-duration: 25s;
+   }
+
+  .rotate-time-20 {
+     animation-duration: 40s;
+   }
+  .rotate-time-30 {
+      animation-duration: 60s;
   }
+
+   .mercury {
+     background-color: var(--o-cyan);
+   }
+
+   .venus {
+     background-color: var(--o-green);
+   }
+
+   .earth {
+     background-color: var(--o-blue);
+   }
+   .mars {
+     background-color: var(--o-red);
+   }
+   .jupiter {
+     background-color: var(--o-green);
+   }
+   .saturn {
+     background-color: var(--o-green);
+   }
+   .uranus  {
+     background-color: var(--o-blue);
+   }
    .neptune {
      background-color: var(--o-indigo);
    }
 
+   .o-arc:hover {
+     cursor: pointer;
+   }
 
+   .o-arc.indigo {
+     background-color: var(--o-indigo);
+   }
   @keyframes rotation {
     0% {
       rotate: 360deg;
@@ -114,15 +158,32 @@
   <div class="bigbang">
     <div class="gravity-spot perspective" style="--o-o-force:800px">
       <div class="orbit-0"></div>
-      <div class="orbit" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.3"></div>
-      <div class="orbit" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.3"></div>
-      <div class="orbit" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.3"></div>
-      <div class="orbit" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.3"></div>
-      <div class="orbit" style="--o-ellipse-x: 0.4; --o-ellipse-y: 0.3"></div>
-      <div class="orbit" style="--o-ellipse-x: 0.35; --o-ellipse-y: 0.28"></div>
-      <div class="orbit" style="--o-ellipse-x: 0.28; --o-ellipse-y: 0.23"></div>
-      <div class="orbit rotate-orbit rotate-time=5" style="--o-ellipse-x: 0.23; --o-ellipse-y: 0.2">
-        <div class="satellite neptune"></div>
+      <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.5">
+        <div class="satellite mercury">
+        </div>
+      </div>
+      <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.5">
+        <div class="satellite venus"></div>
+      </div>
+      <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.5">
+        <div class="satellite earth"></div>
+      </div>
+      <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.5">
+        <div class="satellite mars"></div>
+      </div>
+      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.4; --o-ellipse-y: 0.4">
+        <div class="satellite jupiter grow-2x"></div>
+      </div>
+      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.31; --o-ellipse-y: 0.31">
+        <div class="satellite saturn angle-30 grow-1.8x"></div>
+      </div>
+      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.28; --o-ellipse-y: 0.28">
+        <div class="satellite uranus angle-180 grow-1.2x"></div>
+      </div>
+      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.23; --o-ellipse-y: 0.23">
+        <div class="satellite neptune angle-260 grow-1.2x">
+          <o-arc class="indigo"></o-arc>
+        </div>
       </div>
     </div>
   </div>
