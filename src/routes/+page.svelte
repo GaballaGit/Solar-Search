@@ -10,9 +10,6 @@
     alert("Help clicked!");
   }
 
-  let planet = "Earth";
-
-
   // Planet Variables
   let density = "";
   let escape_vilocity = "";
@@ -30,7 +27,7 @@
       const response = await axios.get(`http://localhost:8000/planet?name=${planet}`);
       console.log(response.data);
       console.log(response.data.gravity);
-      res = response.data;
+      let res = response.data;
 
       density = res.density;
       escape_vilocity = res.escape_vilocity;
@@ -116,8 +113,7 @@
   .perspective{ 
      transform-style: preserve-3d;
      perspective: 300px;
-     transform: rotateX(75deg) rotateY(25deg);
-
+     transform: rotateX(65deg) rotateY(350deg);
    }
 
   .orbit-0 {
@@ -132,10 +128,11 @@
 
 
   .rotate-orbit {
-      animation-name: rotation;
-      animation-iteration-count: 10;
-      animation-timing-function: linear infinite;
-   }
+    animation-name: rotation;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: center center;
+  }
 
    .rotate-time-15 {
      animation-duration: 25s;
@@ -180,18 +177,24 @@
    }
 
    .o-arc.indigo {
-
      background-color: var(--o-indigo);
    }
+   .capsule {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 
   @keyframes rotation {
     0% {
-      rotate: 360deg;
+      transform: rotate(0deg);
     }
 
     100% {
-      rotate: 0deg;
+      transform: rotate(360deg);
     }
   }
 
@@ -202,32 +205,53 @@
   <div class="bigbang">
     <div class="gravity-spot perspective" style="--o-o-force:800px">
       <div class="orbit-0"></div>
-      <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.5">
+      <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite mercury">
+            <div class="capsule">
+              <o-arc class="indigo" on:click={() => sendPlanetGetInfo("mercury")}  ></o-arc>
+            </div>
         </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.5">
+      <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite venus"></div>
+          <div class="capsule">
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("venus")}  ></o-arc>
+          </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.5">
+      <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite earth"></div>
+          <div class="capsule">
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("earth")}  ></o-arc>
+          </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.5">
+      <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite mars"></div>
+          <div class="capsule">
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("mars")}  ></o-arc>
+          </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.4; --o-ellipse-y: 0.4">
+      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite jupiter grow-2x"></div>
+          <div class="capsule">
+            <!--<o-arc class="indigo" on:click={() => sendPlanetGetInfo("jupiter")}  ></o-arc>-->
+          </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.31; --o-ellipse-y: 0.31">
+      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite saturn angle-30 grow-1.8x"></div>
+          <div class="capsule">
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("saturn")}  ></o-arc>
+          </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.28; --o-ellipse-y: 0.28">
+      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite uranus angle-180 grow-1.2x"></div>
+          <div class="capsule">
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("uranus")}  ></o-arc>
+          </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.23; --o-ellipse-y: 0.23">
+      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
         <div class="satellite neptune angle-260 grow-1.2x">
           <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("Neptune")}  ></o-arc>
+            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("neptune")}  ></o-arc>
           </div>
         </div>
       </div>
