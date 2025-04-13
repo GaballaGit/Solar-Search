@@ -17,19 +17,14 @@
   let planetData = '';
 
   onMount(async () => {
-    await import('@zumer/orbit/dist/orbit.js');
-    const buttons = document.querySelectorAll<HTMLElement>('button');
     document.body.style.overflow = 'hidden';
+    await import('@zumer/orbit/dist/orbit.js');
+    const planets = document.querySelectorAll<HTMLElement>('.planet');
+    if(!planets) {return;}
 
-    buttons.forEach(button => {
-      button.addEventListener('click', (event) => {
-        const classSelector = [...button.classList]
-          .map(cls => `.${cls}`)
-          .join('');
-        
-        const planet = document.querySelector<HTMLElement>(`.planet${classSelector}`);
-          
-        if(planet) {zoomIn(planet);}
+    planets.forEach(planet => {
+      planet.addEventListener('click', (event) => {     
+        zoomIn(planet);
       });
     });
   });
@@ -37,17 +32,12 @@
   function zoomIn(planet : HTMLElement) {
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.add('pause-orbit'));
-    console.log("ORBIT STOPPED");
-    orbits.forEach(orbit => console.log(orbit.classList));
     displayDetails();
-
   }
 
   function zoomOut() {
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.remove('pause-orbit'));
-    console.log("ORBIT ADDED");
-    orbits.forEach(orbit => console.log(orbit.classList));
   }
 
   async function sendPlanetGetInfo(planet: string)  {
@@ -73,17 +63,11 @@
 
         const planet = document.querySelector<HTMLElement>(`.planet.${className}`);
         if(!planet) {console.log("no planet"); return;}
-
-        const button = document.querySelector<HTMLElement>(`button.${className}`);
-        if(!button) {console.log("no button"); return;}
         
         const rect = follower.getBoundingClientRect();
         
         planet.style.left = `${rect.left + rect.width / 2}px`;
         planet.style.top = `${rect.top + rect.height / 2}px`;
-
-        button.style.left = planet.style.left;
-        button.style.top = planet.style.top;
       });
 
       requestAnimationFrame(updatePlanets);
@@ -95,10 +79,6 @@
   onMount(() => {
     syncPlanets();
   });
-
-
-
-
 </script>
 
 <style>
@@ -171,8 +151,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
-    z-index: 2; 
+    z-index: 100; 
     transition: 0.2s ease-in;
+    pointer-events: auto;
+  }
+
+  .planet:hover{
+    cursor: pointer;
   }
 
   .perspective{ 
@@ -247,16 +232,13 @@
   }
 </style>
 
-
-<div></div>
-
 <div class="center-div">
   {#if (showDetails)}
   <div class="pDisplay">
     <Display></Display>
   </div>
   {/if}
-  <img src="/images/sun.png" alt="sun" width="200px" class="planet" />
+  <img src="/images/sun.png" alt="sun" width="200px"/>
   <div class="gravity-spot perspective" style="--o-o-force:800px">
 
     <div class="orbit-3 rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.4; --o-ellipse-y: 0.4">
@@ -322,7 +304,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -330,27 +311,19 @@
 <div class="twinkle"></div>
 
 <div>
-  <button class="mercury">'m'</button>
   <img src="/images/mercury.png" alt="m" class="planet mercury"/>
 
   <img src="/images/venus.png" alt="v" class="planet venus"/>
-  <button class="venus">'v'</button>
 
   <img src="/images/earth.png" alt="e" class="planet earth"/>
-  <button class="earth">'e'</button>
 
   <img src="/images/mars.png" alt="m" class="planet mars"/>
-  <button class="mars">'m'</button>
 
   <img src="/images/jupiter.png" alt="j" class="planet jupiter"/>
-  <button class="jupiter">'j'</button>
 
   <img src="/images/saturn.png" alt="s" class="planet saturn"/>
-  <button class="saturn">'s'</button>
 
   <img src="/images/uranus.png" alt="u" class="planet uranus"/>
-  <button class ="uranus">'u'</button>
 
   <img src="/images/neptune.png" alt="n" class="planet neptune"/>
-  <button class="neptune">'n'</button>
 </div>
