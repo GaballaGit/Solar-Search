@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import axios from 'axios'; 
+  import Display from "./components/display.svelte";
   
 
   // Vars 
@@ -12,6 +13,8 @@
     showDetails = true;
   }
 
+
+  let planetData = '';
 
   onMount(async () => {
     await import('@zumer/orbit/dist/orbit.js');
@@ -36,6 +39,7 @@
     orbits.forEach(orbit => orbit.classList.add('pause-orbit'));
     console.log("ORBIT STOPPED");
     orbits.forEach(orbit => console.log(orbit.classList));
+    displayDetails();
 
   }
 
@@ -52,6 +56,7 @@
       console.log(response.data);
       console.log(response.data.gravity);
       let data = response.data;
+      planetData = JSON.parse(data);
 
     } catch (error) {
       console.error('Error fetching planets:', error);
@@ -130,6 +135,11 @@
 
      animation: moveTwinkle 1000s linear infinite;
   }
+
+   .pDisplay {
+     width: 100%;
+     height: 100%;
+   }
 
    @keyframes moveTwinkle {
    from {background-position: 0 0;}
@@ -221,18 +231,7 @@
     z-index: 100;
   }
   
-  :global(button) {
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    z-index: 1000; 
-    opacity: 0;
-  }
-
+ 
   .mercury {width: 75px;}
   .venus {width: 75px;}
   .earth {width: 75px;}
@@ -248,7 +247,15 @@
   }
 </style>
 
+
+<div></div>
+
 <div class="center-div">
+  {#if (showDetails)}
+  <div class="pDisplay">
+    <Display></Display>
+  </div>
+  {/if}
   <img src="/images/sun.png" alt="sun" width="200px" class="planet" />
   <div class="gravity-spot perspective" style="--o-o-force:800px">
 

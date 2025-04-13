@@ -21,8 +21,8 @@ export let rotation_period = '0';
 
 
   .back{
-   background-color: rgba(0,0,80,0.1); 
-    width: 50%;
+   background-color: rgba(0,0,80,0.4); 
+    width: 100%;
     height: 25%;
     margin-top: 5%;
   }
@@ -146,10 +146,12 @@ export let rotation_period = '0';
 
   <div class="main">
     <div class="title">
+      <!--
       <h1></h1>
-      <button> -- Prev</button>
+      <button> -- Prev</button>-->
       <h2>{name}</h2>
-      <button>Next --</button>
+      <!--
+      <button>Next --</button>-->
       <button>Exit</button>
     </div>
     <div class="dataContainer">
