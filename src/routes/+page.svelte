@@ -35,6 +35,7 @@
   function zoomIn(planet : HTMLElement) {
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.add('pause-orbit'));
+    console.log(planet);
     displayDetails();
   }
 
@@ -236,7 +237,7 @@
 <div class="center-div">
   {#if (showDetails)}
   <div class="pDisplay">
-    <Display on:click={offDetails} />
+    <Display on:click={offDetails} name={} moons={} mass={} radius={} semi_major_axis={} gravity={} density={} escape_velocity={} orbital_period={} rotation_period={}/>
     </div>
   {/if}
   <img src="/images/sun.png" alt="sun" width="200px"/>
