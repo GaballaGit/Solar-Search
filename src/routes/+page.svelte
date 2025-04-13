@@ -24,10 +24,11 @@
   async function zoomIn(planet : HTMLImageElement) {
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.add('pause-orbit'));
-    const planetData = sendPlanetGetInfo(planet.alt);
+    planetData = await sendPlanetGetInfo(planet.alt);
 
-
-    showDetails = true;
+    if (planetData) {
+      showDetails = true;
+    }
   }
 
   function zoomOut() {
@@ -42,7 +43,7 @@
   async function sendPlanetGetInfo(planet: string)  {
     try {
       const response = await axios.get(`http://localhost:8000/planet?name=${planet}`);
-      console.table(response);
+      return response.data;
       
     } catch (error) {
       console.error('Error fetching planets:', error);
@@ -212,7 +213,6 @@
     z-index: 100;
   }
   
- 
   .mercury {width: 75px;}
   .venus {width: 75px;}
   .earth {width: 75px;}
@@ -229,14 +229,25 @@
 </style>
 
 <div class="center-div">
-  {#if (showDetails)}
+  {#if showDetails && planetData}
   <div class="pDisplay">
-    <Display on:click={offDetails} name={planetData.name} moons={planetData.moons} mass={planetData.mass} radius={planetData.radius} semi_major_axis={planetData.semi_major_axis} gravity={planetData.gravity} density={planetData.density} escape_velocity={planetData.escape_velocity} orbital_period={planetData.orbital_period} rotation_period={planetData.rotation_period} />
+    <Display 
+      on:click={zoomOut}
+      name={planetData.name}
+      moons={planetData.moons}
+      mass={planetData.mass}
+      radius={planetData.radius}
+      semi_major_axis={planetData.semi_major_axis}
+      gravity={planetData.gravity}
+      density={planetData.density}
+      escape_velocity={planetData.escape_velocity}
+      orbital_period={planetData.orbital_period}
+      rotation_period={planetData.rotation_period}
+      />
     </div>
   {/if}
   <img src="/images/sun.png" alt="sun" width="200px"/>
   <div class="gravity-spot perspective" style="--o-o-force:800px">
-
     <div class="orbit-3 rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.4; --o-ellipse-y: 0.4">
       <div class="satellite mercury">
           <div class="capsule">
