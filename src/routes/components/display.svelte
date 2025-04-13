@@ -1,5 +1,6 @@
 <!-- I AM GOING TO SCREAM -->
 <script>
+
 let placeHolder = "placeHolder";
 let placeHolderNum = "122.5215215125";
 
@@ -152,7 +153,7 @@ export let rotation_period = '0';
       <h2>{name}</h2>
       <!--
       <button>Next --</button>-->
-      <button>Exit</button>
+      <button class="exit" on:click>Exit</button>
     </div>
     <div class="dataContainer">
       <div class="elem"></div>
