@@ -57,6 +57,7 @@
     }
     
     showDetails = false;
+
   }
 
   async function sendPlanetGetInfo(planet: string)  {
