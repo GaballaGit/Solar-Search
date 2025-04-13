@@ -5,28 +5,29 @@ let placeHolderNum = "122.5215215125";
 
 
 // Variables 
-export let name;
-export let moons;
-export let mass;
-export let radius;
-export let semi_major_axis;
-export let gravity;
-export let density;
-export let escape_velocity;
-export let orbital_period;
-export let rotation_period
+export let name = 'Null';
+export let moons = '0';
+export let mass = '0';
+export let radius = '0';
+export let semi_major_axis = '0';
+export let gravity = '0';
+export let density = '0';
+export let escape_velocity = '0';
+export let orbital_period = '0';
+export let rotation_period = '0';
 </script>
 <style>
   @import url('https://fonts.cdnfonts.com/css/venite-adoremus');
 
 
   .back{
-   background-color: rgba(0,0,80,0.5); 
+   background-color: rgba(0,0,80,0.3); 
+    width: 50%;
   }
   
   .main{
-    width: 100vw;
-    height: 100vh;
+    width: 50vw;
+    height: 50vh;
 
     background-image: linear-gradient(
     rgba(17, 20, 53, 0.05),
@@ -39,8 +40,37 @@ export let rotation_period
 
 
   .title{
-    display:flex;
+    display: flex;
     justify-content: center;
+    gap: 30px;
+  }
+
+  .title button{
+    transition: transform 0.3s ease;
+    background-color: rgba(0,0,0,0);
+    border-color: rgba(0,0,0,0);
+    cursor: pointer;
+    font-family: 'Venite Adoremus', sans-serif;
+    text-shadow: 2px 2px 5px gold;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .title button:hover{
+    transform: scale(1.2);
+  }
+
+
+  .title h2 {
+    font-family: 'Venite Adoremus', sans-serif;
+    text-shadow: 2px 2px 5px red;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
   }
 
   .dataContainer{
@@ -56,7 +86,7 @@ export let rotation_period
     font-family: 'Venite Adoremus', sans-serif;
     text-decoration: overline underline;
     text-shadow: 2px 2px 5px red;
-    font-size: 30px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +95,7 @@ export let rotation_period
   .dataContainer h2{
     font-family: 'Venite Adoremus', sans-serif;
     text-shadow: 2px 2px 5px red;
-    font-size: 30px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,6 +110,7 @@ export let rotation_period
 
   .labels{
     display: flex;
+    margin-left: 5px;
     height: 100%;
     width: 100%;
   }
@@ -94,6 +125,12 @@ export let rotation_period
     100%  {
     background-position: 0% 100%;
     }
+
+  @keyframes sizeUp {
+    100% {
+      font-size: 20px 30px;
+    }
+    }
   }
 
 </style>
@@ -102,14 +139,13 @@ export let rotation_period
 
   <div class="main">
     <div class="title">
-      <h3>Earth</h3>
+      <button> -- Prev</button>
+      <h2>{name}</h2>
+      <button>Next --</button>
+      <button>Exit</button>
     </div>
     <div class="dataContainer">
       <div class="elem"></div>
-      <div class="elem">
-        <div class="labels"><h3>name</h3></div>
-        <div class="nums"><h2>{name}</h2></div>
-      </div>   
       <div class="elem">
         <div class="labels"><h3>moons</h3></div>
         <div class="nums"><h2>{moons}</h2></div>
