@@ -25,6 +25,16 @@
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.add('pause-orbit'));
     planetData = await sendPlanetGetInfo(planet.alt);
+    
+    const otherPlanets = document.querySelectorAll<HTMLImageElement>('.planet');
+    const sun = document.querySelector('.sun');
+
+    otherPlanets.forEach(p => {
+      if (planet !== p) {
+        p.style.opacity = '0';
+      }
+    });
+    if(sun) {sun.style.opacity = '0'};
 
     if (planetData) {
       showDetails = true;
@@ -34,10 +44,19 @@
   function zoomOut() {
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.remove('pause-orbit'));
-    
+
+    const otherPlanets = document.querySelectorAll<HTMLImageElement>('.planet');
+    const sun = document.querySelector('.sun');
+
+    otherPlanets.forEach(p => {
+      p.style.opacity = '1';
+    });
+
+    if (sun) {
+      sun.style.opacity = '1';
+    }
     
     showDetails = false;
-    console.log(showDetails);
   }
 
   async function sendPlanetGetInfo(planet: string)  {
@@ -149,8 +168,12 @@
     left: 50%;
     transform: translate(-50%, -50%); 
     z-index: 100; 
-    transition: 0.05s ease-in;
     pointer-events: auto;
+  }
+
+  .planet,
+  .sun {
+    transition: 0.1s ease-in;
   }
 
   .planet:hover{
