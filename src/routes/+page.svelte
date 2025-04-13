@@ -12,10 +12,37 @@
 
   let planet = "Earth";
 
+
+  // Planet Variables
+  let density = "";
+  let escape_vilocity = "";
+  let gravity = "";
+  let mass = "";
+  let moons = "";
+  let name = "";
+  let orbital_period = "";
+  let radius = "";
+  let rotational_period = "";
+  let semi_major_axis = "";
+
   async function sendPlanetGetInfo(planet: string)  {
     try {
       const response = await axios.get(`http://localhost:8000/planet?name=${planet}`);
       console.log(response.data);
+      console.log(response.data.gravity);
+      res = response.data;
+
+      density = res.density;
+      escape_vilocity = res.escape_vilocity;
+      gravity = res.gravity;
+      mass = res.mass;
+      moons = res.moons;
+      name = res.name;
+      orbital_period = res.orbital_period;
+      radius = res.radius;
+      rotational_period = res.rotational_period;
+      semi_major_axis = res.semi_major_axis;
+
     } catch (error) {
       console.error('Error fetching planets:', error);
     }
