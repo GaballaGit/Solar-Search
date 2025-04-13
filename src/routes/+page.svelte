@@ -4,41 +4,23 @@
   
   onMount(async () => {
     await import('@zumer/orbit/dist/orbit.js');
+    const arcs = document.querySelectorAll('o-arc');
+    arcs.forEach(arc => {
+      arc.addEventListener('click', handleHelpClick);
+    });
   });
+
 
   function handleHelpClick() {
     alert("Help clicked!");
   }
-
-  // Planet Variables
-  let density = "";
-  let escape_vilocity = "";
-  let gravity = "";
-  let mass = "";
-  let moons = "";
-  let name = "";
-  let orbital_period = "";
-  let radius = "";
-  let rotational_period = "";
-  let semi_major_axis = "";
 
   async function sendPlanetGetInfo(planet: string)  {
     try {
       const response = await axios.get(`http://localhost:8000/planet?name=${planet}`);
       console.log(response.data);
       console.log(response.data.gravity);
-      let res = response.data;
-
-      density = res.density;
-      escape_vilocity = res.escape_vilocity;
-      gravity = res.gravity;
-      mass = res.mass;
-      moons = res.moons;
-      name = res.name;
-      orbital_period = res.orbital_period;
-      radius = res.radius;
-      rotational_period = res.rotational_period;
-      semi_major_axis = res.semi_major_axis;
+      let data = response.data;
 
     } catch (error) {
       console.error('Error fetching planets:', error);
@@ -97,29 +79,31 @@
     z-index: 10;
    }
 
-
-  .bigbang {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .gravity-spot {
      width: 800px;
      height: 800px;
      position: relative;
    }
 
-  .perspective{ 
-     transform-style: preserve-3d;
-     perspective: 300px;
-     transform: rotateX(65deg) rotateY(350deg);
-   }
-
   .orbit-0 {
-    border-color: var(--o-red);
-    z-index: 30;
+    position: relative;
   }
+
+  .planet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important; 
+    transform-style: flat !important; 
+    perspective: none !important; 
+    z-index: 2; 
+  }
+
+  .perspective{ 
+    transform-style: preserve-3d;
+    perspective: 300px;
+    transform: rotateX(65deg) rotateY(350deg);
+   }
 
   .orbit,
   [class*=orbit-] {
@@ -145,43 +129,10 @@
       animation-duration: 60s;
   }
 
-   .mercury {
-     background-color: var(--o-cyan);
-   }
-
-   .venus {
-     background-color: var(--o-green);
-   }
-
-   .earth {
-     background-color: var(--o-blue);
-   }
-   .mars {
-     background-color: var(--o-red);
-   }
-   .jupiter {
-     background-color: var(--o-green);
-   }
-   .saturn {
-     background-color: var(--o-green);
-   }
-   .uranus  {
-     background-color: var(--o-blue);
-   }
-   .neptune {
-     background-color: var(--o-indigo);
-   }
-
    .o-arc:hover {
      cursor: pointer;
    }
 
-   .o-arc.indigo {
-     background-color: var(--o-indigo);
-   }
-   .o-arc.green{
-     background-color: var(--o-green);
-   }
    .capsule {
     width: 100%;
     height: 100%;
@@ -203,71 +154,76 @@
 
 </style>
 
-
 <div class="center-div">
-  <div class="bigbang">
-    <div class="gravity-spot perspective" style="--o-o-force:800px">
-      <div class="orbit-0"></div>
-      <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite mercury">
-            <div class="capsule">
-              <o-arc class="indigo" on:click={() => sendPlanetGetInfo("mercury")}></o-arc>
-            </div>
-        </div>
-      </div>
-      <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite venus">
-            <div class="capsule">
-              <o-arc class="indigo" on:click={() => sendPlanetGetInfo("venus")}></o-arc>-->
-          </div>
-        </div>
-      </div>
-      <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite earth">
+  <img src="/images/sun.png" alt="sun" width="200px" class="planet" />
+  <div class="gravity-spot perspective" style="--o-o-force:800px">
+    <div class="orbit-0">  </div>
+    <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
+      <div class="satellite mercury">
           <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("earth")}></o-arc>
+            <o-arc></o-arc>
+            <img src="/images/mercury.png" alt="mercury" width=75px class="planet"/>
           </div>
+      </div>
+    </div>
+    <div class="orbit rotate-orbit rotate-time-15" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
+      <div class="satellite venus">
+        <div class="capsule">
+          <o-arc></o-arc>
+          <img src="/images/venus.png" alt="venus" width=75px class="planet"/>
         </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite mars">
-          <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("mars")}></o-arc>-->
-          </div>
+    </div>
+    <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
+      <div class="satellite earth">
+        <div class="capsule">
+          <o-arc></o-arc>
+          <img src="/images/earth.png" alt="earth" width=75px class="planet"/>
         </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite jupiter grow-2x">
-          <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("jupiter")}></o-arc>
-          </div>
+    </div>
+    <div class="orbit rotate-orbit rotate-time-20" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
+      <div class="satellite mars">
+        <div class="capsule">
+          <o-arc></o-arc>
+          <img src="/images/mars.png" alt="mars" width=75px class="planet"/>
         </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite saturn angle-30 grow-1.8x">
-          <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("saturn")}></o-arc>
-          </div>
-        </div>
-
-      </div>
-      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite uranus angle-180 grow-1.2x">
-
-          <div class="capsule">
-            <o-arc class="green" on:click={() => sendPlanetGetInfo("uranus")}></o-arc>
-          </div>
+    </div>
+    <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
+      <div class="satellite jupiter">
+        <div class="capsule">
+          <o-arc></o-arc>
+          <img src="/images/jupiter.png" alt="jupiter" width=75px class="planet"/>
         </div>
       </div>
-      <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
-        <div class="satellite neptune angle-260 grow-1.2x">
-          <div class="capsule">
-            <o-arc class="indigo" on:click={() => sendPlanetGetInfo("Neptune")}  ></o-arc>
-          </div>
+    </div>
+    <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
+      <div class="satellite saturn angle-30 grow-1.8x">
+        <div class="capsule">
+          <o-arc></o-arc>
+          <img src="/images/saturn.png" alt="saturn" width=75px class="planet"/>
+        </div>
+      </div>
+    </div>
+    <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
+      <div class="satellite uranus angle-180 grow-1.2x">
+        <div class="capsule">
+          <o-arc></o-arc>
+          <img src="/images/uranus.png" alt="uranus" width=75px class="planet"/>
+        </div>
+      </div>
+    </div>
+    <div class="orbit rotate-orbit rotate-time-30" style="--o-ellipse-x: 0.3; --o-ellipse-y: 0.3">
+      <div class="satellite neptune angle-260 grow-1.2x">
+        <div class="capsule">
+          <o-arc></o-arc>
+          <img src="/images/neptune.png" alt="neptune" width=75px class="planet"/>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="stars"></div>
 <div class="twinkle"></div>
