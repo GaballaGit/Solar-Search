@@ -231,7 +231,7 @@
 <div class="center-div">
   {#if (showDetails)}
   <div class="pDisplay">
-    <Display on:click={offDetails} name={} moons={} mass={} radius={} semi_major_axis={} gravity={} density={} escape_velocity={} orbital_period={} rotation_period={}/>
+    <Display on:click={offDetails} name={planetData.name} moons={planetData.moons} mass={planetData.mass} radius={planetData.radius} semi_major_axis={planetData.semi_major_axis} gravity={planetData.gravity} density={planetData.density} escape_velocity={planetData.escape_velocity} orbital_period={planetData.orbital_period} rotation_period={planetData.rotation_period} />
     </div>
   {/if}
   <img src="/images/sun.png" alt="sun" width="200px"/>
