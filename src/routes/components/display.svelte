@@ -104,9 +104,7 @@ export let rotation_period = '0';
     font-family: 'Venite Adoremus', sans-serif;
     text-shadow: 2px 2px 5px red;
     font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   
 }
   .elem{
     display: flex;
@@ -118,6 +116,7 @@ export let rotation_period = '0';
 
   .labels{
     display: flex;
+    flex: 2;
     margin-left: 5px;
     height: 100%;
     width: 100%;
@@ -125,6 +124,7 @@ export let rotation_period = '0';
 
   .nums{
     display:flex;
+    flex: 1;
     height: 100%;
     width: 100%;
   }

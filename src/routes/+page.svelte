@@ -12,10 +12,13 @@
   function displayDetails() {
     showDetails = true;
   }
-
+  
+  function offDetails() {
+    showDetails = false;
+    console.log(showDetails);
+  }
 
   let planetData = '';
-
   onMount(async () => {
     document.body.style.overflow = 'hidden';
     await import('@zumer/orbit/dist/orbit.js');
@@ -38,16 +41,14 @@
   function zoomOut() {
     const orbits = document.querySelectorAll<HTMLElement>('.rotate-orbit');
     orbits.forEach(orbit => orbit.classList.remove('pause-orbit'));
+    offDetails(); 
   }
 
   async function sendPlanetGetInfo(planet: string)  {
     try {
       const response = await axios.get(`http://localhost:8000/planet?name=${planet}`);
-      console.log(response.data);
-      console.log(response.data.gravity);
-      let data = response.data;
-      planetData = JSON.parse(data);
-
+      console.table(response);
+      
     } catch (error) {
       console.error('Error fetching planets:', error);
     }
@@ -235,8 +236,8 @@
 <div class="center-div">
   {#if (showDetails)}
   <div class="pDisplay">
-    <Display></Display>
-  </div>
+    <Display on:click={offDetails} />
+    </div>
   {/if}
   <img src="/images/sun.png" alt="sun" width="200px"/>
   <div class="gravity-spot perspective" style="--o-o-force:800px">
