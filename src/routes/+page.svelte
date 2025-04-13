@@ -70,7 +70,7 @@
   .perspective{ 
      transform-style: preserve-3d;
      perspective: 300px;
-     transform: rotateX(65deg) rotateY(25deg);
+     transform: rotateX(75deg) rotateY(25deg);
 
    }
 
@@ -79,25 +79,51 @@
     z-index: 30;
   }
 
-  .orbit {
-    border-color: var(--o-cyan);
-    z-index: 30;
+  .orbit,
+  [class*=orbit-] {
+    border: 0.1px solid rgba(255, 255, 255, 0.422)
+  }
+
+
+  .rotate-orbit {
+      animation-name: rotation;
+      animation-iteration-count: 10;
+      animation-timing-function: linear;
+   }
+
+  .rotate-time-5 {
+      animation-duration: 5s;
+  }
+   .neptune {
+     background-color: var(--o-indigo);
+   }
+
+
+  @keyframes rotation {
+    0% {
+      rotate: 360deg;
+    }
+
+    100% {
+      rotate: 0deg;
+    }
   }
 </style>
 
-
 <div class="center-div">
   <div class="bigbang">
-    <div class="gravity-spot perspective" style="--o-o-force:300px">
+    <div class="gravity-spot perspective" style="--o-o-force:800px">
       <div class="orbit-0"></div>
-      <div class="orbit"></div>
-      <div class="orbit"></div>
-      <div class="orbit"></div>
-      <div class="orbit"></div>
-      <div class="orbit"></div>
-      <div class="orbit"></div>
-      <div class="orbit"></div>
-      <div class="orbit"></div>
+      <div class="orbit" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.3"></div>
+      <div class="orbit" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.3"></div>
+      <div class="orbit" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.3"></div>
+      <div class="orbit" style="--o-ellipse-x: 0.5; --o-ellipse-y: 0.3"></div>
+      <div class="orbit" style="--o-ellipse-x: 0.4; --o-ellipse-y: 0.3"></div>
+      <div class="orbit" style="--o-ellipse-x: 0.35; --o-ellipse-y: 0.28"></div>
+      <div class="orbit" style="--o-ellipse-x: 0.28; --o-ellipse-y: 0.23"></div>
+      <div class="orbit rotate-orbit rotate-time=5" style="--o-ellipse-x: 0.23; --o-ellipse-y: 0.2">
+        <div class="satellite neptune"></div>
+      </div>
     </div>
   </div>
 </div>
