@@ -256,26 +256,15 @@
     width: 200px;
     transform: translateX(500px);
   }
-  .mercury {width: 14px;}
-  .venus {width: 34px;}
-  .earth {width: 36px;}
-  .mars {width: 18px;}
-  .jupiter {width: 201px;}
-  .saturn {width: 167px;}
-  .uranus {width: 73px;}
-  .neptune {width: 71px;}
 
-  .container {
-    display:flex;
-    justify-content: flex-end;
-    width: 100%;
-  }
-
-  .content {
-    width: 66.7%;
-    height: 100vh;
-    padding:20px;
-  }
+  .mercury {width: 35px;}
+  .venus {width: 35px;}
+  .earth {width: 35px;}
+  .mars {width: 45px;}
+  .jupiter {width: 75px;}
+  .saturn {width: 70px;}
+  .uranus {width: 55px;}
+  .neptune {width: 55px;}
 
   @keyframes rotation {
     0% {transform: rotate(0deg);}
