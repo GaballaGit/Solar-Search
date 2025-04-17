@@ -241,14 +241,14 @@
     width: 200px;
     transform: translateX(500px);
   }
-  .mercury {width: 75px;}
-  .venus {width: 75px;}
-  .earth {width: 75px;}
-  .mars {width: 75px;}
+  .mercury {width: 35px;}
+  .venus {width: 35px;}
+  .earth {width: 35px;}
+  .mars {width: 45px;}
   .jupiter {width: 75px;}
-  .saturn {width: 75px;}
-  .uranus {width: 75px;}
-  .neptune {width: 75px;}
+  .saturn {width: 70px;}
+  .uranus {width: 55px;}
+  .neptune {width: 55px;}
 
   @keyframes rotation {
     0% {transform: rotate(0deg);}
